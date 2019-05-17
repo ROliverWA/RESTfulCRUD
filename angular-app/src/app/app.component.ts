@@ -10,8 +10,24 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = "Restful Task API Angular Style"
   results;
+  showThem: boolean = false;
   constructor(private _httpService: HttpService) {
-  let response = _httpService.getTasks();
-  response.subscribe(res => {console.log(res);this.results = res})
+      
   }
+
+  GetBtnClick()  {
+    let task = this._httpService.getTasks();
+    task.subscribe(res => this.results = res);
+    
+  }
+
+  DisplayDetails() {
+    this.showThem = true;    
+  }
+
+  HideDetails (){
+    this.showThem = false;
+  }
+    
+  
 }
