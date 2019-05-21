@@ -1,0 +1,36 @@
+<div class='contaputer-fluid wrapper'>
+    <div class='row'>
+    <h1>Create a New Task</h1>
+    </div>
+    <form #f="ngForm" class='create-form form-group' >
+    <div class='row'>
+      <p>Task Name: </p>
+    </div>
+    <div class='row'>
+      <input required [(ngModel)]="newName" id="task_name" type='text' name='task_name' class='task-name form-control'>      
+     </div>
+    <div class='row' class='desc_title'>
+      <p>Description:</p>
+      </div>
+    <div class='row'>
+    <textarea required name='task_desc' class='des_content' [(ngModel)]='newDesc'></textarea>
+    </div>
+    <div class='row'>
+      <button class='btn btn-primary update_btn' (click) = 'createClicked()'> Save Task</button>
+      <button class='btn btn-danger cancel_btn' (click) = 'cancelClicked()'>Cancel Changes</button>
+    </div>
+    
+    </form>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>

@@ -16,7 +16,7 @@ getOne: (req, res) => {
 
 add: (req, res) => {
     const task = new Task({title: req.params.title, description: req.params.desc,
-    completed: true});
+    completed: false});
     task.save()
     .then(result=>res.json(result))
     .catch(err=>console.log(err));
@@ -33,5 +33,15 @@ destroy: (req, res) => {
     Task.findByIdAndDelete(req.params.id)
     .then(results=>res.json(results))
     .catch();
-}
+},
+
+status: (req, res) => {    
+    Task.findById(req.params.id)
+    .then(the_task => {return  (new_task = !the_task.completed);})
+    .then(result=>{return Task.findByIdAndUpdate(req.params.id, {completed: result});})
+    .then(finished=> {console.log(finished); res.json(finished);})
+    .catch();}
+       
+
+
 };

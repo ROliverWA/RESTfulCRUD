@@ -1,0 +1,37 @@
+<div class='contaputer-fluid wrapper'>
+<div class='row'>
+<h1>Edit {{requested.title}}</h1>
+</div>
+<form class='edit-form' #f='ngForm'>
+  
+<div class='row'>
+  <p>Task Name:</p>
+</div>
+<div class='row'>
+  <input required ngModel type='text' name='task_name' class='task-name' [(ngModel)] = "requested.title">
+</div>
+<div class='row' class='desc_title'>
+  <p>Description:</p>
+  </div>
+<div class='row'>
+<textarea required ngModel name='task_desc' class='des_content' [(ngModel)]="requested.description"></textarea>
+</div>
+<div class='row'>
+  <button class='btn btn-primary update_btn'(click) = 'updateClicked(requested)'>Save Updates</button>
+  <button class='btn btn-danger cancel_btn' (click) = 'cancelClicked()'>Cancel Changes</button>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

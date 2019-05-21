@@ -1,19 +1,31 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
 
-<div>
-  <button (click)='GetBtnClick()'>Click This To Get Some Info!</button>
-  <ul *ngFor="let result of results">
-    <li>
-        Task to Be Completed: {{ result.title }}<button *ngIf = !showThem (click)='DisplayDetails()'>Show </button>
-        <button *ngIf =showThem (click)='HideDetails()'>Hide </button>
-        <p *ngIf="showThem">{{result.description}}</p>
-    </li>
-    
-  </ul>
+<div style="text-align:center" class='wrapper'>
+  <h1>
+    Welcome to {{ title }}!    
+  </h1>
+  <!-- {{results | json}} -->
 </div>
+<div class='res' *ngIf="resultWin">
+  <h2>Here is a list of the current tasks:  <button class='btn btn-primary add-btn' (click) = 'EnableAddWindow()' >Add</button></h2>    
+  <div class='res_table'>
+  <table class="table table-hover res_table">
+    <thead>
+      <tr>        
+        <th scope="col">Task Name</th>
+        <th scope="col">Task Details</th>
+        <th scope="col">Competed</th>
+      </tr>
+    </thead>
+    <tbody>    
+      <tr *ngFor="let task of results" (click) ='ChangeCompleted(task._id)'>        
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.completed}}</td>        
+        <td><button class='btn btn-warning' (click)='GetOneTask(task._id, $event)'>Edit</button></td>
+        <td><button class='btn btn-danger' (click)='DeleteOne(task._id)'>Delete</button></td>      
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<edit-data *ngIf="editWindow" [requested] = "requested" (canceled)='hideWindows()' (updated)='GetTasks()'></edit-data><create-data *ngIf="createWindow" (canceled)='hideWindows()' (created)='GetTasks()'></create-data>

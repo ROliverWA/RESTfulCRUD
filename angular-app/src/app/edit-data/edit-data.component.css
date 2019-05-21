@@ -1,0 +1,52 @@
+* {
+    padding: 0px;
+    margin: 0px;
+   
+    
+}
+
+.wrapper {
+    max-width: 30%;
+    margin: auto;
+    border: 2px solid #ffc107;
+    height: 500px;
+    text-align: center;
+    padding: 5px;
+}
+
+.edit-form {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.task-name {
+    margin-top: 5px;
+    border: 1px solid black;
+}
+
+.des_content {
+    margin-top: 5px;
+    border: 1px solid black;
+    width: 70%;
+    height: 100px;
+    resize: none;
+}
+
+.desc_title {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.update_btn {
+    margin-top: 100px;
+    margin-left: 20px;
+    height: 30px;
+    width: 65px;
+}
+
+.cancel_btn {
+    margin-top: 100px;
+    margin-left: 50px;
+    height: 30px;
+    width: 65px;
+}
